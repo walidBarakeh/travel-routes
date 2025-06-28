@@ -63,6 +63,25 @@ Route 1: public_transport (Public Transport) → flight (Airlines)
   Departure: 2024-07-01 08:00
   Arrival:   2024-07-01 16:30
 
+## 🧪 Test Coverage
+
+To check test coverage:
+
+```sh
+go test -coverprofile=coverage.txt ./...
+go tool cover -func=coverage.txt
+```
+
+Latest coverage: **21.7%** of statements
+
+| File                | Coverage |
+|---------------------|----------|
+| utils.go            | 100%     |
+| config.go           | 69.2%    |
+| (others, handlers)  | 0%       |
+
+> See `coverage.txt` for details. Improve coverage by adding more tests for services and handlers.
+
 ✅ TODO
 
 Add tests for services and handlers

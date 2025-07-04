@@ -29,7 +29,7 @@ func (ts *TransportService) GetGroundTransport(from, to Location, date time.Time
 	if err == nil {
 		return transitOption, nil
 	}
-	
+
 	// Fallback to taxi estimate
 	return ts.getTaxiEstimate(from, to, date)
 }
@@ -42,31 +42,31 @@ func (ts *TransportService) getPublicTransit(from, to Location, date time.Time) 
 	params.Add("mode", "transit")
 	params.Add("departure_time", fmt.Sprintf("%d", date.Unix()))
 	params.Add("key", ts.config.GoogleMapsAPIKey)
-	
+
 	resp, err := ts.client.Get(baseURL + "?" + params.Encode())
 	if err != nil {
 		return TransportOption{}, err
 	}
 	defer resp.Body.Close()
-	
+
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return TransportOption{}, err
 	}
-	
+
 	var directionsResp GoogleDirectionsResponse
 	if err := json.Unmarshal(body, &directionsResp); err != nil {
 		return TransportOption{}, err
 	}
-	
+
 	if directionsResp.Status != "OK" || len(directionsResp.Routes) == 0 || len(directionsResp.Routes[0].Legs) == 0 {
 		return TransportOption{}, fmt.Errorf("no transit routes found")
 	}
-	
+
 	leg := directionsResp.Routes[0].Legs[0]
 	duration := time.Duration(leg.Duration.Value) * time.Second
 	price := ts.estimateTransportPrice(leg.Distance.Value, "transit")
-	
+
 	return TransportOption{
 		Mode:      "public_transport",
 		From:      from,
@@ -84,7 +84,7 @@ func (ts *TransportService) getTaxiEstimate(from, to Location, date time.Time) (
 	distance := CalculateDistance(from.Latitude, from.Longitude, to.Latitude, to.Longitude)
 	duration := time.Duration(distance/60) * time.Hour // Assume 60km/h average
 	price := ts.estimateTransportPrice(int(distance*1000), "taxi")
-	
+
 	return TransportOption{
 		Mode:      "taxi",
 		From:      from,
@@ -100,7 +100,7 @@ func (ts *TransportService) getTaxiEstimate(from, to Location, date time.Time) (
 
 func (ts *TransportService) estimateTransportPrice(distanceMeters int, mode string) float64 {
 	distanceKm := float64(distanceMeters) / 1000
-	
+
 	switch mode {
 	case "transit", "public_transport":
 		// Base fare + distance-based pricing

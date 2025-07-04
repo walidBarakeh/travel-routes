@@ -30,10 +30,10 @@ type GooglePlacesResponse struct {
 				Lng float64 `json:"lng"`
 			} `json:"location"`
 		} `json:"geometry"`
-		Types           []string `json:"types"`
-		BusinessStatus  string   `json:"business_status,omitempty"`
-		Rating          float64  `json:"rating,omitempty"`
-		PriceLevel      int      `json:"price_level,omitempty"`
+		Types          []string `json:"types"`
+		BusinessStatus string   `json:"business_status,omitempty"`
+		Rating         float64  `json:"rating,omitempty"`
+		PriceLevel     int      `json:"price_level,omitempty"`
 	} `json:"results"`
 	Status string `json:"status"`
 }
@@ -42,7 +42,7 @@ type GooglePlacesResponse struct {
 type GoogleGeocodingResponse struct {
 	Results []struct {
 		FormattedAddress string `json:"formatted_address"`
-		Geometry struct {
+		Geometry         struct {
 			Location struct {
 				Lat float64 `json:"lat"`
 				Lng float64 `json:"lng"`

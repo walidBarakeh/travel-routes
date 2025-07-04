@@ -218,8 +218,8 @@ func TestRoute(t *testing.T) {
 		}
 
 		route := Route{
-			Segments:  []TransportOption{groundTransport, flight, finalTransport},
-			Currency:  "EUR",
+			Segments: []TransportOption{groundTransport, flight, finalTransport},
+			Currency: "EUR",
 		}
 
 		route.CalculateTotals()
@@ -299,7 +299,6 @@ func TestAirportDistance(t *testing.T) {
 	})
 }
 
-// Test JSON marshaling/unmarshaling for API compatibility
 func TestLocationJSONSerialization(t *testing.T) {
 	location := Location{
 		Name:      "Madrid",
@@ -310,9 +309,6 @@ func TestLocationJSONSerialization(t *testing.T) {
 		Country:   "Spain",
 		PlaceID:   "test-place-id",
 	}
-
-	// This test ensures the struct tags are correct for JSON serialization
-	// In a real scenario, you'd test actual JSON marshaling/unmarshaling
 	assert.Equal(t, "Madrid", location.Name)
 	assert.Equal(t, "city", location.Type)
 	assert.Equal(t, "Spain", location.Country)
@@ -337,7 +333,6 @@ func TestTransportOptionJSONSerialization(t *testing.T) {
 		BookingURL: "https://example.com",
 	}
 
-	// Verify all fields are accessible (JSON tags would be tested in integration tests)
 	assert.Equal(t, "flight", transport.Mode)
 	assert.Equal(t, madrid, transport.From)
 	assert.Equal(t, barcelona, transport.To)

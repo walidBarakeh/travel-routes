@@ -1,4 +1,3 @@
-// File: config.go
 package main
 
 import (

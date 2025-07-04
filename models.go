@@ -18,27 +18,27 @@ type Location struct {
 
 // TransportOption represents a transportation option
 type TransportOption struct {
-	Mode        string        `json:"mode"`        // "flight", "train", "bus", "taxi"
-	From        Location      `json:"from"`
-	To          Location      `json:"to"`
-	Duration    time.Duration `json:"duration"`
-	Price       float64       `json:"price"`
-	Currency    string        `json:"currency"`
-	Departure   time.Time     `json:"departure"`
-	Arrival     time.Time     `json:"arrival"`
-	Provider    string        `json:"provider"`
-	BookingURL  string        `json:"booking_url,omitempty"`
+	Mode       string        `json:"mode"` // "flight", "train", "bus", "taxi"
+	From       Location      `json:"from"`
+	To         Location      `json:"to"`
+	Duration   time.Duration `json:"duration"`
+	Price      float64       `json:"price"`
+	Currency   string        `json:"currency"`
+	Departure  time.Time     `json:"departure"`
+	Arrival    time.Time     `json:"arrival"`
+	Provider   string        `json:"provider"`
+	BookingURL string        `json:"booking_url,omitempty"`
 }
 
 // Route represents a complete travel route
 type Route struct {
-	Segments     []TransportOption `json:"segments"`
-	TotalPrice   float64           `json:"total_price"`
-	Currency     string            `json:"currency"`
-	TotalTime    time.Duration     `json:"total_time"`
-	Departure    time.Time         `json:"departure"`
-	Arrival      time.Time         `json:"arrival"`
-	Description  string            `json:"description"`
+	Segments    []TransportOption `json:"segments"`
+	TotalPrice  float64           `json:"total_price"`
+	Currency    string            `json:"currency"`
+	TotalTime   time.Duration     `json:"total_time"`
+	Departure   time.Time         `json:"departure"`
+	Arrival     time.Time         `json:"arrival"`
+	Description string            `json:"description"`
 }
 
 // AirportDistance represents an airport with its distance from origin

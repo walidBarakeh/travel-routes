@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
 	"time"
-	"github.com/joho/godotenv"
 )
 
 func main() {

@@ -1,3 +1,5 @@
+[![Go Coverage](https://img.shields.io/badge/coverage-48.5%25-yellowgreen)](coverage.txt)
+
 Travel Route Finder (Go)
 
 A lightweight Go web service that finds travel routes between cities using:
@@ -72,23 +74,26 @@ go test -coverprofile=coverage.txt ./...
 go tool cover -func=coverage.txt
 ```
 
-Latest coverage: **21.7%** of statements
+Latest coverage: **48.5%** of statements (as of June 28, 2025)
 
 | File                | Coverage |
 |---------------------|----------|
 | utils.go            | 100%     |
 | config.go           | 69.2%    |
-| (others, handlers)  | 0%       |
+| handlers.go         | 62.5%    |
+| airport_service.go  | 54.2%    |
+| flight_service.go   | 75–100%  |
+| transport_service.go| 69–100%  |
+| travel_finder.go    | 12.1%    |
+| main.go             | 0%       |
 
 > See `coverage.txt` for details. Improve coverage by adding more tests for services and handlers.
 
 ✅ TODO
 
-Add tests for services and handlers
-
-Replace mock flight logic with real Amadeus API calls
-
-Add error logging middleware
+- Add more tests for services and handlers (coverage is improving!)
+- Replace mock flight logic with real Amadeus API calls
+- Add error logging middleware
 
 Happy hacking! ✈️
 

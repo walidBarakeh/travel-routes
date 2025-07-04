@@ -138,7 +138,7 @@ func TestConfigStruct(t *testing.T) {
 	t.Run("Config struct field validation", func(t *testing.T) {
 		config := Config{
 			GoogleMapsAPIKey: "AIzaSyBvOkBwgGlbUiuS-oKrPbB3IFI-7JGQYdA", // Example format
-			DefaultRadius:    500000, // 500km
+			DefaultRadius:    500000,                                    // 500km
 		}
 
 		// Test that API key looks reasonable (basic format check)

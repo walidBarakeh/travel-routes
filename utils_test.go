@@ -186,7 +186,7 @@ func TestRouteCalculateTotals(t *testing.T) {
 
 	// Create test transport options
 	departure := time.Date(2024, 7, 1, 8, 0, 0, 0, time.UTC)
-	
+
 	groundTransport := TransportOption{
 		Mode:      "taxi",
 		From:      madrid,
@@ -269,9 +269,9 @@ func TestPrintRoutes(t *testing.T) {
 	// Create a simple route for testing
 	madrid := Location{Name: "Madrid", Type: "city"}
 	barcelona := Location{Name: "Barcelona", Type: "city"}
-	
+
 	departure := time.Date(2024, 7, 1, 8, 0, 0, 0, time.UTC)
-	
+
 	transport := TransportOption{
 		Mode:      "flight",
 		From:      madrid,
@@ -296,8 +296,6 @@ func TestPrintRoutes(t *testing.T) {
 
 	routes := []Route{route}
 
-	// Capture output by redirecting stdout
-	// This is a basic test to ensure the function doesn't panic
 	t.Run("PrintRoutes doesn't panic", func(t *testing.T) {
 		assert.NotPanics(t, func() {
 			PrintRoutes(routes)
@@ -310,12 +308,10 @@ func TestPrintRoutes(t *testing.T) {
 		})
 	})
 }
-
-// Benchmark tests for performance-critical functions
 func BenchmarkCalculateDistance(b *testing.B) {
-	lat1, lon1 := 40.7128, -74.0060 // New York
+	lat1, lon1 := 40.7128, -74.0060  // New York
 	lat2, lon2 := 34.0522, -118.2437 // Los Angeles
-	
+
 	for i := 0; i < b.N; i++ {
 		CalculateDistance(lat1, lon1, lat2, lon2)
 	}
@@ -323,7 +319,7 @@ func BenchmarkCalculateDistance(b *testing.B) {
 
 func BenchmarkExtractIATACode(b *testing.B) {
 	airportName := "Madrid-Barajas Airport (MAD)"
-	
+
 	for i := 0; i < b.N; i++ {
 		ExtractIATACode(airportName)
 	}
